@@ -110,7 +110,6 @@ export default class CEP extends React.Component {
 
     getUrl =  () => {
 
-        const pattern = /^[0-9]{5}-[0-9]]{3}$/;
 
        
 

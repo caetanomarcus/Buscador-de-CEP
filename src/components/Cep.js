@@ -113,7 +113,7 @@ export default class CEP extends React.Component {
 
        
 
-        const url =`http://viacep.com.br/ws/${this.state.cep}/json/`;
+        const url =`https://viacep.com.br/ws/${this.state.cep}/json/`;
 
         axios.get(url)
         .then(res => {
@@ -168,7 +168,7 @@ export default class CEP extends React.Component {
                <form>
                <Container>
                 <Input mask='99999-999' type='text' value={this.state.cep} onChange={this.handleChange} placeholder="Digite seu cep" ></Input>
-                <Btn onClick={this.handleClick} >Enviar</Btn>
+                <Btn onClick={this.handleClick} >Buscar</Btn>
                 </Container>
                <Container>
                <P >{this.state.completo}</P>

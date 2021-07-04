@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Link para testar:
+
+Hospedado na Netfly, você pode acessar o Buscador de Cep [aqui](https://60e1fbc94fcd840007df9c2d--hopeful-hopper-ecd1e2.netlify.app/).
+
 ## Available Scripts
 
 In the project directory, you can run:

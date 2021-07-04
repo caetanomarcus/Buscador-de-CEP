@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import Cep from './components/Cep'
+import styled from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle `
+
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body{
+    background: #ed9624;
+    
+  }
+`
+
+const Div = styled.div `
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Div>
+      <GlobalStyle/>
+      <Cep />
+    </Div>
   );
 }
 

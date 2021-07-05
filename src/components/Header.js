@@ -14,7 +14,7 @@ const Container = styled.div `
     align-items: center;
 
     @media(max-width:960px){
-        height: 70vh;
+        height: 45vh;
     }
 `
 const H1 = styled.h1 `

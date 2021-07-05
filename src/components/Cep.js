@@ -93,32 +93,23 @@ export default class CEP extends React.Component {
         axios.get(url)
         .then(res => {
             const endereco = res.data;
-            if(res.data.hasOwnProperty('erro')){
-                this.setState({
-                    cpf: 'CEP inexistente'
-                }) 
-            } else {
+            
                 this.setState({
                     logradouro: endereco.logradouro,
                     bairro: endereco.bairro,
                     cidade: endereco.localidade,
                     estado: endereco.uf,
             })
-               console.log(res)
-            }
+               if(res.data.hasOwnProperty('erro')){
+                   this.setState({
+                       logradouro: 'CEP inexistente',
+                       bairro: 'CEP inexistente',
+                       cidade: 'CEP inexistente',
+                       estado: 'CEP inexistente'
+                   })
+               }
+            
         })
-        /*.then(() => {
-            if(this.state.logradouro !== undefined) {
-                this.setState({
-                    completo: `CEP ${this.state.cep}, ${this.state.logradouro}, bairro ${this.state.bairro}, ${this.state.cidade}, ${this.state.estado}`,
-                    
-                })
-            } else {
-                this.setState({
-                    cpf: 'CEP inexistente'
-                }) 
-            }
-        }) */
         .catch(err => console.error('ops! ocorreu um erro' + err));
 
     };

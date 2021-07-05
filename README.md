@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Link para testar:
 
-Hospedado na Netfly, você pode acessar o Buscador de Cep [aqui](https://60e26aea57490b0007404972--hopeful-hopper-ecd1e2.netlify.app/).
+Hospedado na Netfly, você pode acessar o Buscador de Cep [aqui](https://60e270db1d19db0007434af5--hopeful-hopper-ecd1e2.netlify.app/).
 
 ## Available Scripts
 

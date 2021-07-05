@@ -13,13 +13,12 @@ const Input = styled(InputMask) `
     font-size: 1.3rem;
     height: 4.6vh;
     color: #000;
-    
-    
-    
-    @media(max-width: 968px){
-        width: 40vw;
-        font-size: 1.2rem;
+
+    @media(max-width: 769px){
+       
+        font-size: 4.2vw;
     }
+    
    
 `
 const Label = styled.label `
@@ -27,35 +26,45 @@ const Label = styled.label `
     font-size: 2rem;
     font-weight: 700;
     margin-right: 5px;
+
+
+    @media(max-width: 769px){
+        font-size: 4.2vw;
+    }
 `
 
 const Div = styled.div `
     width: 100vw;
     height: 51vh;
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
     border: white solid 1px;
     border-radius: 7px;
     flex-wrap: wrap;
     
-   
+    @media(max-width: 769px){
+        
+        justify-content: center;
+        border: none;
+        
+    }
     
 
-    @media(max-width:968px) {
-        width: 78vw;
-        height: 30vh;
-    }
-
+    
 `
 const Container = styled.div `
-    width: 33vw;
+    width: 32vw;
     height: 5vw;
     display: flex;
     align-items: center;
-    justify-content: center; 
-
-    @media(max-width:414px) {
-        font-size: 30px;
-        height: 30vh;
+    margin: 0 5px;
+  
+    @media(max-width: 1024px){
+        width: 80%;
+        border-radius: 10px;
+        
     }
     
 `
@@ -130,13 +139,12 @@ export default class CEP extends React.Component {
     render(){
         return(
             <Div>
-               
                <Container>
                 <Label htmlFor='cep'>Cep</Label>
                 <Input mask='99999-999' type='text' value={this.state.cep} onChange={this.handleChange} placeholder="Digite seu cep" id="cep" onBlur={this.handleClick}></Input>
                 </Container>
                 <Container>
-                    <Label htmlFor='rua'>Logradouro</Label>
+                    <Label htmlFor='rua'>Lograd.</Label>
                     <Input id='rua' disabled value={this.state.logradouro} ></Input>
                 </Container>
                 <Container>

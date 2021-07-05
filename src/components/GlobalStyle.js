@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle `
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+    https://www.ted.com/talks/emilie_wapnick_why_some_of_us_don_t_have_one_true_calling?language=pt-br#t-197687
     font-family: 'Oswald', sans-serif;
   }
 

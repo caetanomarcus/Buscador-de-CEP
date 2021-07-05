@@ -1,35 +1,15 @@
 import Cep from './components/Cep'
-import styled from 'styled-components'
-import { createGlobalStyle } from 'styled-components';
+import Header from './components/Header'
+import GlobalStyle from './components/GlobalStyle'
 
-const GlobalStyle = createGlobalStyle `
-
-  *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  body{
-    background: #ed9624;
-    
-  }
-`
-
-const Div = styled.div `
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-
-`
 
 function App() {
   return (
-    <Div>
+    <div>
       <GlobalStyle/>
+      <Header />
       <Cep />
-    </Div>
+    </div>
   );
 }
 

@@ -3,23 +3,16 @@ import styled from 'styled-components';
 import axios from 'axios';
 import InputMask from 'react-input-mask';
 
-const Title = styled.h1 `
-    color: #ed9624;
-    text-shadow: 2px 2px 1px #000;
-    text-align: center;
 
-
-`
 
 const Input = styled(InputMask) `
-    border-radius: 5px;
-    background: #eee;
+    border-radius: 15px;
+    background: #fff;
     border: solid 1px gold;
     outline: none;
-    height: 15px;
-    font-size: 1.5rem;
-    height: 6vh;
-    width: 15vw;
+    font-size: 1.3rem;
+    height: 4.6vh;
+    
     
     
     @media(max-width: 968px){
@@ -28,60 +21,35 @@ const Input = styled(InputMask) `
     }
    
 `
-
-const Btn = styled.button `
-    border-radius: 4px;
-    border: solid black 1px;
-    cursor: pointer;
-    background: #ed9624;
-    height: 6vh;
-    font-size: 1.4rem;
-    &:active {
-        transform: scale(0.9);
-    }
-
-    @media(max-width: 968px){
-        width: 20vw;
-        margin: 0 10px;
-        font-size: 1.1rem;
-    }
-    
-`
-
-const P = styled.p `
-    font-fontSize: 18px;
-    color: #960505;
-    align-self: center;
-    width: 590px;
-    text-align: center;
-    
-   
-
+const Label = styled.label `
+    color: #eee;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-right: 5px;
 `
 
 const Div = styled.div `
-    width: 40vw;
-    height: 25vw;
-    background: #f3f768;
+    width: 100vw;
+    height: 51vh;
     display: flex;
+    border: white solid 1px;
+    border-radius: 7px;
+    flex-wrap: wrap;
+    
    
-    flex-direction: column;
-    border-radius: 5px;
     
 
     @media(max-width:968px) {
         width: 78vw;
-        height: 70vh;
-
-        
-       
+        height: 30vh;
     }
 
 `
 const Container = styled.div `
-    height: 10vw;
+    width: 33vw;
+    height: 5vw;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center; 
 
     @media(max-width:414px) {
@@ -110,37 +78,37 @@ export default class CEP extends React.Component {
 
     getUrl =  () => {
 
-
-       
-
         const url =`https://viacep.com.br/ws/${this.state.cep}/json/`;
 
         axios.get(url)
         .then(res => {
             const endereco = res.data;
-            this.setState({
-                logradouro: endereco.logradouro,
-                bairro: endereco.bairro,
-                cidade: endereco.localidade,
-                estado: endereco.uf,
+            if(res.data.hasOwnProperty('erro')){
+                this.setState({
+                    cpf: 'CEP inexistente'
+                }) 
+            } else {
+                this.setState({
+                    logradouro: endereco.logradouro,
+                    bairro: endereco.bairro,
+                    cidade: endereco.localidade,
+                    estado: endereco.uf,
             })
                console.log(res)
+            }
         })
-        .then(() => {
+        /*.then(() => {
             if(this.state.logradouro !== undefined) {
                 this.setState({
                     completo: `CEP ${this.state.cep}, ${this.state.logradouro}, bairro ${this.state.bairro}, ${this.state.cidade}, ${this.state.estado}`,
-                    cep: ''
+                    
                 })
-                
-               
             } else {
                 this.setState({
-                    completo: 'Você digitou um cep inválido ou inexistente.'
-                })
-                
+                    cpf: 'CEP inexistente'
+                }) 
             }
-        })
+        }) */
         .catch(err => console.error('ops! ocorreu um erro' + err));
 
     };
@@ -153,28 +121,36 @@ export default class CEP extends React.Component {
         })
     };
    
-    handleClick = (e) => {
-        e.preventDefault();
+    handleClick = () => {
         this.getUrl();
-        
-        
     };
 
 
     render(){
         return(
             <Div>
-                <Title>Buscador de CEP</Title>
-               <form>
+               
                <Container>
-                <Input mask='99999-999' type='text' value={this.state.cep} onChange={this.handleChange} placeholder="Digite seu cep" ></Input>
-                <Btn onClick={this.handleClick} >Buscar</Btn>
+                <Label htmlFor='cep'>Cep</Label>
+                <Input mask='99999-999' type='text' value={this.state.cep} onChange={this.handleChange} placeholder="Digite seu cep" id="cep" onBlur={this.handleClick}></Input>
                 </Container>
-               <Container>
-               <P >{this.state.completo}</P>
-               </Container>
-               </form>
-                
+                <Container>
+                    <Label htmlFor='rua'>Logradouro</Label>
+                    <Input id='rua' disabled value={this.state.logradouro} ></Input>
+                </Container>
+                <Container>
+                    <Label htmlFor='bairo' >Bairro</Label>
+                    <Input id='bairro' disabled value={this.state.bairro} ></Input>
+                </Container>
+                <Container>
+                    <Label htmlFor='cidade' >Cidade</Label>
+                    <Input id='cidade' disabled value={this.state.cidade}></Input>
+                </Container>
+                <Container>
+                    <Label htmlFor='uf' >Estado</Label>
+                    <Input id='uf' disabled value={this.state.estado}></Input>
+                </Container>
+               
             </Div>
         )
     }

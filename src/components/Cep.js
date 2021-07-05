@@ -12,6 +12,7 @@ const Input = styled(InputMask) `
     outline: none;
     font-size: 1.3rem;
     height: 4.6vh;
+    color: #000;
     
     
     
